@@ -16,7 +16,7 @@ class PersistenceManager{
        }()
     
     
-    private var database = [Nest.Datas.InnerData.RedditPostRem]()
+     var database = [Nest.Datas.InnerData.RedditPostRem]()
     
     private func save(post: Nest.Datas.InnerData.RedditPostRem){
         database.append(post)

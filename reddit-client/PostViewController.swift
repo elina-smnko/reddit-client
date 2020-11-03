@@ -21,12 +21,15 @@ class PostViewController: UIViewController {
     
     private let viewModel = PostViewModel()
     
+    private var post = RedditPost()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewModel.loadOnePost(subreddit: Subreddit.FoodPorn, sorting: Sorting.top, parameters: [Parameters.limit : "1"], completion: { (post) in
             DispatchQueue.main.async {
                 self.showPost(post: post)
+                self.post = post
             }
         })
     }
@@ -35,7 +38,6 @@ class PostViewController: UIViewController {
         self.usernameLabel.text = post.username
         self.timeLabel.text = "\(Int(Date().timeIntervalSince(post.time)/3600))h"
         self.domainLabel.text = post.domain
-        //TODO: saved state
         self.titleLabel.text = post.title
         self.ratingLabel.text = "↑\(post.rating)"
         self.commentsLabel.text = "\(post.num_comments)"
@@ -45,6 +47,12 @@ class PostViewController: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
+        if !post.saved {
+            saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        } else {
+           saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
+        post.saved = !post.saved
     }
     
     @IBAction func shareTapped(_ sender: Any) {

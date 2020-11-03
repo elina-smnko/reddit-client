@@ -43,7 +43,7 @@ struct Nest: Codable {
     }
 }
 
-struct RedditPost{
+class RedditPost{
     let username: String
     let domain: String
     let time: Date
@@ -63,6 +63,19 @@ struct RedditPost{
         self.imageLink = imageLink
         self.saved = false
     }
+    
+    init() {
+        self.username = "username"
+        self.domain = "domain"
+        self.time = Date()
+        self.title = "title"
+        self.rating = 0
+        self.num_comments = 0
+        self.imageLink = "imageLink"
+        self.saved = false
+    }
+    
+    
 }
 
 
