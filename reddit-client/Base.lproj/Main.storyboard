@@ -45,6 +45,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDH-fp-SuQ" userLabel="save">
                                                         <rect key="frame" x="356.5" y="0.0" width="17.5" height="22"/>
                                                         <state key="normal" image="bookmark" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="saveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dOa-E5-iys"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -75,6 +78,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwh-kY-HmC">
                                                         <rect key="frame" x="355" y="0.0" width="19" height="22"/>
                                                         <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H20-uo-yPn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -100,6 +106,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="commentsLabel" destination="MZA-64-5pC" id="V84-Pa-gqL"/>
+                        <outlet property="domainLabel" destination="eia-0R-iKl" id="1fL-0b-HXp"/>
+                        <outlet property="imageView" destination="alw-98-Evc" id="zEl-A5-JKk"/>
+                        <outlet property="ratingLabel" destination="cWh-8P-1cz" id="EMR-gs-VCu"/>
+                        <outlet property="saveButton" destination="bDH-fp-SuQ" id="UQF-zi-upj"/>
+                        <outlet property="timeLabel" destination="big-57-IUl" id="B70-zq-EQ2"/>
+                        <outlet property="titleLabel" destination="phC-wB-3qP" id="SxL-Fj-2d7"/>
+                        <outlet property="usernameLabel" destination="MDv-CO-82p" id="qaU-pn-h4N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
