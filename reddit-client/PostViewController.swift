@@ -19,10 +19,12 @@ class PostViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     
+    private let viewModel = PostViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        PostViewModel.shared.loadOnePost(subreddit: Subreddit.FoodPorn, sorting: Sorting.top, parameters: [Parameters.limit : "1"], completion: { (post) in
+        viewModel.loadOnePost(subreddit: Subreddit.FoodPorn, sorting: Sorting.top, parameters: [Parameters.limit : "1"], completion: { (post) in
             DispatchQueue.main.async {
                 self.showPost(post: post)
             }
@@ -31,7 +33,7 @@ class PostViewController: UIViewController {
     
     func showPost(post: RedditPost){
         self.usernameLabel.text = post.username
-        self.timeLabel.text = "\(round(Date().timeIntervalSince(post.time)/3600))h"
+        self.timeLabel.text = "\(Int(Date().timeIntervalSince(post.time)/3600))h"
         self.domainLabel.text = post.domain
         //TODO: saved state
         self.titleLabel.text = post.title
@@ -39,7 +41,7 @@ class PostViewController: UIViewController {
         self.commentsLabel.text = "\(post.num_comments)"
         
 
-        imageView.sd_setImage(with: URL(string: post.imageLink), placeholderImage: nil)
+        imageView.sd_setImage(with: URL(string: post.imageLink), placeholderImage: UIImage(named: "placeholder"))
     }
     
     @IBAction func saveTapped(_ sender: Any) {
